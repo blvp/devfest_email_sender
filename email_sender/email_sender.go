@@ -110,6 +110,6 @@ func (es EmailSender) CreateMessage(email *UserEmail) *gomail.Message {
 	m.SetHeader("From", es.From)
 	m.SetHeader("To", email.User.Email)
 	m.SetHeader("Subject", es.Subject)
-	m.SetBody("text/plain", email.Message)
+	m.SetBody("text/html", email.Message)
 	return m
 }
