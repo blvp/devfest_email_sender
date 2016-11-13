@@ -7,7 +7,7 @@ import (
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/binding"
-	"text/template"
+	"html/template"
 	"mime/multipart"
 	"github.com/gocarina/gocsv"
 	"bytes"
@@ -59,7 +59,7 @@ func main() {
 			panic(err)
 		}
 
-		t, err := template.New("messageTemplate").Parse(uf.Template)
+		t := template.Must(template.New("messageTemplate").Parse(uf.Template))
 		userEmails := []*email_sender.UserEmail{}
 		for id, user := range users {
 			sw := bytes.NewBuffer([]byte{})
